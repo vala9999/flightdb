@@ -11,7 +11,7 @@ begin
 	update ticket_holder set username = null 
 	where ticket_holder = ticket_num;
 end //
-
+# this actually doesn't need to be a procedure
 delimiter ;
 
 		
