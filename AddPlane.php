@@ -24,8 +24,8 @@
    
             $sql = "INSERT INTO plane ".
                "(plane_id, first_class_seats, second_class_seats, economy_seats) "."VALUES ".
-               "('$i_planeID','$i_firstClass','$i_secondClass', '$i_econClass')";
-            //$sql2 = "insert into plane_makes_flight(flight_id, plane_id) values('NULL','$i_planeID')";  The plane makes flight table needs to be updated somehow... Haven't decided how to do it yet
+               "('$i_planeID','$i_firstClass','$i_secondClass', '$i_econClass');";
+            //$sql = "insert into plane_makes_flight(flight_id, plane_id) values('NULL','$i_planeID');";  The plane makes flight table needs to be updated somehow... Haven't decided how to do it yet
 			//mysqli_select_db($conn,'university');
             $retval = mysqli_query($conn, $sql);
          
@@ -93,7 +93,15 @@
 	  
    <?php
       }
+      $sql = "insert into plane_makes_flight(flight_id, plane_id) values('NULL','$i_planeID');";  
+	   // should update the plane_makes_flight table
+      $retval = mysqli_query($conn, $sql);
+           
+      if(! $retval ) {
+         die('Could not enter data: ' . mysqli_error($conn));
+      }
    ?>
+   
    <hr width="50">
 <a href="Frontpage.html" style="color:red;font-weight:bold;">Home</a>
 <hr width="50">
