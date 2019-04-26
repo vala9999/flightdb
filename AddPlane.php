@@ -57,7 +57,7 @@
 		 else {
       ?>
 	  <br><br><br><br>
-     <p>Enter flight info for insertion <br> </p>
+     <p>Enter plane info for insertion <br> </p>
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
 			<tr>
