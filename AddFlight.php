@@ -2,16 +2,29 @@
 <html>
 
    <head>
-      <title>Add a New Flight</title>
-   </head>
+        <title>Add Flight</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+	<ul>
+		<li><a href="Homepage.php">Home</a></li>
+		<li><a href="BuyTicket.php">Buy Ticket</a></li>
+		<li><a href="CancelTicket.php">Cancel Ticket</a></li>
+		<li><a href="Adminpage.php">Admin Home</a></li>
+		<li><a href="AddPlane.php">Add Plane</a></li>
+		<li><a href="RemovePlane.php">Remove Plane</a></li>
+		<li><a class="active" href="AddFlight.php">Add Flight</a></li>
+		<li><a href="RemoveFlight.php">Remove Flight</a></li>
+	</ul>
 
    <body>
-   <div style="height:900px; background-color: lightblue;" align="center">
+   <div>
       <?php
 	  
 		require("tableshow.php");
 		require("dbconnect.php");
 		require("idGen.php");
+		
+		show_plane($conn);
 	  
          if(isset($_POST['add'])) {
             $i_flightID = generateID();
@@ -28,18 +41,65 @@
                "(flight_id,flight_depart_timestamp, ETA, destination_airport, departure_airport) "."VALUES ".
                "('$i_flightID','$i_DepartTime','$i_ETA', '$i_DestAP','$i_DepartAP')";
             
-			//Also when a plane is added and assigned to a flight we need to insert availible tickets 
-			//corresponding with the number of seats to ticket holder with null in place of passenger_name(this get updated when a someone 'buys' a ticket)
 			
+			$sql2 = "insert into plane_makes_flight(flight_id, plane_id) values('$i_flightID','$i_planeID')";
 			
-			//mysqli_select_db($conn,'university');
-            $retval = mysqli_query($conn, $sql);
+			$retval = mysqli_query($conn, $sql);
+            if(! $retval) {
+               die('Could not enter data: ' . mysqli_error($conn));
+            }
+			
+			$retval = mysqli_query($conn, $sql2);
             if(! $retval) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
          
             echo "Entered data successfully\n\n";
+			/////////////////////////////////////////////////////////////
+			//Create Empty First Class Tickets
+			$amtFirstQ = "select first_class_seats from plane where plane_id = '$i_planeID'";
+			$retval = mysqli_query($conn, $amtFirstQ);
+			$row = $retval->fetch_assoc();
+			$retval = intval($row['first_class_seats']);
+			for($i = 0; $i < $retval; $i++){
+				$idVal = generateID();
+				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'FirstClass','100','$i_DepartTime','NULL')";
+				$retval2 = mysqli_query($conn, $insertQ);
+				if(! $retval2) {
+					die('Could not enter data: ' . mysqli_error($conn));
+				}
+			}
+			/////////////////////////////////////////////////////////////
+			//Create Empty Second Class Tickets
 			
+			$amtSecondQ = "select second_class_seats from plane where plane_id = '$i_planeID'";
+			$retval = mysqli_query($conn, $amtSecondQ);
+			$row = $retval->fetch_assoc();
+			$retval = intval($row['second_class_seats']);
+			for($i = 0; $i < $retval; $i++){
+				$idVal = generateID();
+				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'SecondClass','50','$i_DepartTime','NULL')";
+				$retval2 = mysqli_query($conn, $insertQ);
+				if(! $retval2) {
+					die('Could not enter data: ' . mysqli_error($conn));
+				}
+			}
+			/////////////////////////////////////////////////////////////
+            //Create Empty Economy Class Tickets
+			
+			$amtEconomyQ = "select economy_seats from plane where plane_id = '$i_planeID'";
+			$retval = mysqli_query($conn, $amtEconomyQ);
+			$row = $retval->fetch_assoc();
+			$retval = intval($row['economy_seats']);
+			for($i = 0; $i < $retval; $i++){
+				$idVal = generateID();
+				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'EconomyClass','25','$i_DepartTime','NULL')";
+				$retval2 = mysqli_query($conn, $insertQ);
+				if(! $retval2) {
+					die('Could not enter data: ' . mysqli_error($conn));
+				}
+			}
+			/////////////////////////////////////////////////////////////
 			echo " <br> Flight table after insertion <br>";
 			show_flight($conn);
 			
@@ -108,9 +168,7 @@
    <?php
       }
    ?>
-   <hr width="50">
-<a href="Frontpage.html" style="color:red;font-weight:bold;">Home</a>
-<hr width="50">
+   
    </div>
    
    </body>

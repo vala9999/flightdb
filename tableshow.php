@@ -9,7 +9,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	
-	echo "<br><h3> Flight Table<h3> <br>";
+	echo "<br><h3 id='TT'> Flight Table<h3> <br>";
 	
 	echo '<table border>';
 	echo '<thead><tr>';
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	
-	echo "<br><h3> Plane Table<h3> <br>";
+	echo "<br><h3 id='TT'> Plane Table<h3> <br>";
 	
 	echo '<table border>';
 	echo '<thead><tr>';
@@ -86,7 +86,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	
-	echo "<br><h3> Planes assigned to Flights Table<h3> <br>";
+	echo "<br><h3 id='TT'> Planes assigned to Flights Table<h3> <br>";
 	
 	echo '<table border>';
 	echo '<thead><tr>';
@@ -113,4 +113,81 @@ if ($result->num_rows > 0) {
 //$conn->close();
 }
 
+function show_ticket_holder($conn){
+
+//include "dbconnect.php";
+
+$sql = "SELECT * FROM ticket_holder";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	
+	echo "<br><h3 id='TT'> Ticket Holders<h3> <br>";
+	
+	echo '<table border>';
+	echo '<thead><tr>';
+	echo '<th>'."Ticket ID".'</th>'.'<th>'."Seating Type".'</th>'.'<th>'."Price".'</th>'.'<th>'."Departure Time".'</th>'.'<th>'."Name".'</th>';
+	echo '</tr></thead>';
+	echo '<tbody>';
+
+	while($row = $result->fetch_assoc()) {
+		echo '<tr>';
+        echo "<td>" . $row["ticket_id"]. "</td>";
+		echo "<td>" . $row["seating_type"]. "</td>";
+		echo "<td>" . $row["price"]. "</td>";
+		echo "<td>" . $row["ticket_depart_timestamp"]. "</td>";
+		echo "<td>" . $row["username"]. "</td>";
+		echo '</tr>';
+    }
+	
+	echo '</tbody>';
+	echo '</table>';
+	
+    // output data of each row
+    
+	
+} else {
+    echo "0 results";
+}
+//$conn->close();
+}
+
+function show_ticket_holder_adv($conn, $sql){
+
+//include "dbconnect.php";
+
+//$sql = "SELECT * FROM ticket_holder";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	
+	echo "<br><h3 id='TT'> Ticket Holders<h3> <br>";
+	
+	echo '<table border>';
+	echo '<thead><tr>';
+	echo '<th>'."Ticket ID".'</th>'.'<th>'."Seating Type".'</th>'.'<th>'."Price".'</th>'.'<th>'."Departure Time".'</th>'.'<th>'."Name".'</th>';
+	echo '</tr></thead>';
+	echo '<tbody>';
+
+	while($row = $result->fetch_assoc()) {
+		echo '<tr>';
+        echo "<td>" . $row["ticket_id"]. "</td>";
+		echo "<td>" . $row["seating_type"]. "</td>";
+		echo "<td>" . $row["price"]. "</td>";
+		echo "<td>" . $row["ticket_depart_timestamp"]. "</td>";
+		echo "<td>" . $row["username"]. "</td>";
+		echo '</tr>';
+    }
+	
+	echo '</tbody>';
+	echo '</table>';
+	
+    // output data of each row
+    
+	
+} else {
+    echo "0 results";
+}
+//$conn->close();
+}
 ?>
