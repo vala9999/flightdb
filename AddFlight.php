@@ -6,14 +6,12 @@
         <link rel="stylesheet" href="style.css">
     </head>
 	<ul>
-		<li><a href="Homepage.php">Home</a></li>
-		<li><a href="BuyTicket.php">Buy Ticket</a></li>
-		<li><a href="CancelTicket.php">Cancel Ticket</a></li>
 		<li><a href="Adminpage.php">Admin Home</a></li>
 		<li><a href="AddPlane.php">Add Plane</a></li>
 		<li><a href="RemovePlane.php">Remove Plane</a></li>
 		<li><a class="active" href="AddFlight.php">Add Flight</a></li>
 		<li><a href="RemoveFlight.php">Remove Flight</a></li>
+		<li><a href="Homepage.php">Log Out</a></li>
 	</ul>
 
    <body>
@@ -112,8 +110,8 @@
 		 
 		 else {
       ?>
-	  <br><br><br><br>
-     <p>Enter flight info for insertion <br> </p>
+	  
+     <p><br><br>Enter flight info for insertion<br><br></p>
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
             <tr>

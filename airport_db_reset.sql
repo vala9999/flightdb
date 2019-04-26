@@ -4,7 +4,6 @@ drop table plane;
 drop table ticket_holder;
 drop table flight;
 
-
 create table flight (
 	flight_id varchar(8),
 	flight_depart_timestamp timestamp not null,

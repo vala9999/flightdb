@@ -13,6 +13,17 @@
    <body>
       <h1>Admin Login</h1>
 	  <br><br><br><br>
+	  <?php
+	      if(isset($_POST['add'])) {
+              $i_pass = $_POST['$i_pass'];
+		      if ($i_pass == 'smitty') {
+			      header('Location: Adminpage.php');
+		      }
+		      else {
+			      echo '<p>Incorrect password. Try again.</p><br><br>';
+		      }
+		  }
+	  ?>
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
             <tr>
@@ -25,7 +36,7 @@
             <tr>
                <td width = "250">Password</td>
                <td>
-                  <input name = "pass" type = "text" id = "pass">
+                  <input name = "$i_pass" type = "text" id = "$i_pass">
                </td>
             </tr>
          

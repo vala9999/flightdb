@@ -12,8 +12,7 @@
 	</ul>
 	<body>
         <h1>Home</h1>
-		<br></br>
-        <p>Buy or Cancel a Ticket</p>
+        <p><br>Buy or Cancel a Ticket<br><br><br></p>
         
 		<?php 
 			require("tableshow.php");

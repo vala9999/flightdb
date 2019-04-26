@@ -52,8 +52,8 @@
 		 else {
 			 show_flight($conn);
 		?>
-	  <br><br><br><br>
-     <p>Enter the flight-ID and Seating Class you want for your flight <br> </p>
+	  
+     <p><br><br>Enter the flight-ID and Seating Class you want for your flight<br><br></p>
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
             <tr>
@@ -64,7 +64,11 @@
             </tr>  
 			
 			<tr>
-               <td width = "250">[FirstClass],[SecondClass],[EconomyClass]</td>
+               <td width = "250">Seating Class:<br><br>
+			       [FirstClass],<br>
+				   [SecondClass],<br>
+				   [EconomyClass]
+			   </td>
                <td>
                   <input name = "$i_SClass" type = "text" id = "$i_SClass">
                </td>
