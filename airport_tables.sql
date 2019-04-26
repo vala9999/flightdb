@@ -1,9 +1,9 @@
 create table flight (
 	flight_id varchar(8),
-	flight_depart_timestamp timestamp,
+	flight_depart_timestamp timestamp not null,
 	ETA timestamp,
-	destination_airport varchar(64),
-	departure_airport varchar(64),
+	destination_airport varchar(64) not null,
+	departure_airport varchar(64) not null,
 	primary key (flight_id)
 	);
 	
@@ -17,9 +17,9 @@ create table plane (
 	
 create table ticket_holder (
 	ticket_id varchar(16),
-	seating_type varchar(32),
+	seating_type varchar(32) not null,
 	price numeric(5,2) check (price > 0),
-	ticket_depart_timestamp timestamp,
+	ticket_depart_timestamp timestamp not null,
 	username varchar(32),
 	primary key (ticket_id)
 	);
@@ -30,6 +30,7 @@ create table ticket_for_flight (
 	primary key (ticket_id, flight_id),
 	foreign key (ticket_id) references ticket_holder (ticket_id),
 	foreign key (flight_id) references flight (flight_id)
+	on delete cascade
 	);
 	
 create table plane_makes_flight (
@@ -38,5 +39,6 @@ create table plane_makes_flight (
 	primary key (flight_id, plane_id),
 	foreign key (flight_id) references flight (flight_id),
 	foreign key (plane_id) references plane (plane_id)
+	on delete cascade
 	);	
 	
