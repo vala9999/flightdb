@@ -9,14 +9,16 @@ h1 {
 	margin: 0 1.5%;
 	width: 40%;
 	margin-left: 44%; 
+	font-family: Helvetica;
 }
 p {
-	color: orange;
+	color: coral;
 	float: left;
 	margin: 0 1.5%;
 	width: 40%;
 	margin-left: 44%;
 	margin-right: 44%;
+	font-family: Helvetica;
 }
 
 /* Nav Bar */
@@ -30,12 +32,14 @@ ul {
 	height: 100%; /* Full height */
 	position: fixed; /* Make it stick, even on scroll */
 	overflow: auto; /* Enable scrolling if the sidenav has too much content */
+	font-family: Helvetica;
 }
 li a {
 	display: block;
 	color: #000;
 	padding: 8px 16px;
 	text-decoration: none;
+	font-family: Helvetica;
 }
 li a:hover {
 	background-color: #527f7f;
@@ -72,9 +76,11 @@ th {
 	background-color: #527f7f;
 }
 td {
+	color: black;
 	vertical-align: middle;
 	padding: 15px;
 	border-bottom: 1px solid #ddd;
+	font-family: Helvetica;
 }
-tr:nth-child(even) {background-color: #527f7f;}
-tr:nth-child(odd) {background-color: #787f7f;}
+tr:nth-child(even) {background-color: #f1f1f1;}
+tr:nth-child(odd) {background-color: #d3d3d3;}

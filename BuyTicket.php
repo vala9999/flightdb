@@ -8,11 +8,7 @@
 		<li><a href="Homepage.php">Home</a></li>
 		<li><a class="active" href="BuyTicket.php">Buy Ticket</a></li>
 		<li><a href="CancelTicket.php">Cancel Ticket</a></li>
-		<li><a href="Adminpage.php">Admin Home</a></li>
-		<li><a href="AddPlane.php">Add Plane</a></li>
-		<li><a href="RemovePlane.php">Remove Plane</a></li>
-		<li><a href="AddFlight.php">Add Flight</a></li>
-		<li><a href="RemoveFlight.php">Remove Flight</a></li>
+		<li><a href="login.php">Admin Login</a></li>
 	</ul>
 
    <body>

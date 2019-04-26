@@ -2,8 +2,8 @@
 //Step1
  $servername = "localhost";  // if you run on local server the name is "localhost:3306". If you run on cs server, use only "localhost"
 $username = "root";
-$password = "";
-$dbname = "DBProject";
+$password = "root";
+$dbname = "airport";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

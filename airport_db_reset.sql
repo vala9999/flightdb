@@ -1,8 +1,9 @@
-drop table flight;
+drop table plane_makes_flight;
+drop table ticket_for_flight;
 drop table plane;
 drop table ticket_holder;
-drop table ticket_for_flight;
-drop table plane_makes_flight;
+drop table flight;
+
 
 create table flight (
 	flight_id varchar(8),
