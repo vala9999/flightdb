@@ -6,27 +6,30 @@
     </head>
 	<ul>
 		<li><a href="Homepage.php">Home</a></li>
-		<li><a class="active" href="BuyTicket.php">Buy Ticket</a></li>
-		<li><a href="CancelTicket.php">Cancel Ticket</a></li>
+		<li><a href="BuyTicket.php">Buy Ticket</a></li>
+		<li><a class="active" href="CancelTicket.php">Cancel Ticket</a></li>
 		<li><a href="login.php">Admin Login</a></li>
 	</ul>
 
    <body>
    <div>
 		<?php
-		
 		require("tableshow.php");
 		require("dbconnect.php");
 		require("idGen.php");
-			
+		
 		if(isset($_POST['add'])) {
             $i_ticketID = $_POST['$i_ticketID'];
 			$i_email = $_POST['email'];
 			
-            $sql = "update ticket_holder SET username = ".$i_email." WHERE ticket_id = ".$i_ticketID;
+            $sql = "update ticket_holder SET username = null 
+			        WHERE ticket_id = ".$i_ticketID." 
+					and username = ".$i_email;
             $retval = mysqli_query($conn, $sql);
+         
+            echo "Entered data successfully\n\n";
 			
-			echo " <br>You reserved these tickets:<br>";
+			echo " <br> Plane table after insertion <br>";
 			show_ticket_holder_adv($conn, $sql);
 			
             mysqli_close($conn);
@@ -40,7 +43,7 @@
 			 show_ticket_holder($conn);
 		?>
 	  
-     <p><br><br>Enter the flight-ID and Seating Class you want for your flight,<br>
+     <p><br><br>Enter the ticket ID you want to cancel,<br>
 				then enter your email address.<br><br></p>
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">

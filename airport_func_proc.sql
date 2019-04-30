@@ -11,12 +11,7 @@ begin
 	update ticket_holder set username = null 
 	where ticket_holder = ticket_num;
 end //
-						      
-create procedure delay_flight (in fly_id varchar(8), in dept_time timestamp)
-begin
-	update flight set departure_timestamp = dept_time
-	where flight_id = fly_id;
-end //
+
 delimiter ;
-						      
+
 		
