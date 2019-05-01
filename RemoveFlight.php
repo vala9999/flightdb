@@ -26,13 +26,20 @@
 				
 				echo " <br> Plane table before deletion <br>";
 				show_flight($conn);
-	   
-				$sql = "DELETE FROM flight WHERE flight_id = $i_flightID";
+				
+				$sql1 = "DELETE FROM ticket_holder WHERE flight_id = $i_flightID";
+				$sql2 = "DELETE FROM flight WHERE flight_id = $i_flightID";
 				
 				//mysqli_select_db($conn,'university');
-				$retval = mysqli_query($conn, $sql);
+				$retval1 = mysqli_query($conn, $sql1);
 			 
-				if(! $retval ) {
+				if(! $retval1 ) {
+				   die('Could not enter data: ' . mysqli_error($conn));
+				}
+				
+				$retval2 = mysqli_query($conn, $sql2);
+			 
+				if(! $retval2 ) {
 				   die('Could not enter data: ' . mysqli_error($conn));
 				}
 			 
@@ -54,7 +61,7 @@
 		  <form method = "post" action = "<?php $_PHP_SELF ?>">
 			 <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
 				<tr>
-				   <td width = "250">Plane ID</td>
+				   <td width = "250">Flight ID</td>
 				   <td>
 					  <input name = "$i_flightID" type = "text" id = "$i_flightID">
 				   </td>

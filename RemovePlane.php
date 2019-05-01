@@ -28,13 +28,20 @@
 			
 			echo " <br> Plane table before deletion <br>";
 			show_plane($conn);
-   
-            $sql = "DELETE FROM plane WHERE plane_id = $i_planeID";
+			$sql1 = "DELETE FROM ticket_holder WHERE plane_id = $i_planeID";
+            $sql2 = "DELETE FROM plane WHERE plane_id = $i_planeID";
             
 			//mysqli_select_db($conn,'university');
-            $retval = mysqli_query($conn, $sql);
+			$retval1 = mysqli_query($conn, $sql1);
          
-            if(! $retval ) {
+            if(! $retval1 ) {
+               die('Could not enter data: ' . mysqli_error($conn));
+            }
+			
+			
+            $retval2 = mysqli_query($conn, $sql2);
+         
+            if(! $retval2 ) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
          
