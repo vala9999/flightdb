@@ -40,17 +40,14 @@
                "('$i_flightID','$i_DepartTime','$i_ETA', '$i_DestAP','$i_DepartAP')";
             
 			
-			$sql2 = "insert into plane_makes_flight(flight_id, plane_id) values('$i_flightID','$i_planeID')";
+			
 			
 			$retval = mysqli_query($conn, $sql);
             if(! $retval) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
 			
-			$retval = mysqli_query($conn, $sql2);
-            if(! $retval) {
-               die('Could not enter data: ' . mysqli_error($conn));
-            }
+			
          
             echo "Entered data successfully\n\n";
 			/////////////////////////////////////////////////////////////
@@ -61,7 +58,7 @@
 			$retval = intval($row['first_class_seats']);
 			for($i = 0; $i < $retval; $i++){
 				$idVal = generateID();
-				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'FirstClass','100','$i_DepartTime','NULL')";
+				$insertQ = "insert into ticket_holder(ticket_id, flight_id, plane_id, seating_type, price, ticket_depart_timestamp, username) values($idVal, $i_flightID, $i_planeID, 'FirstClass','100','$i_DepartTime','NULL')";
 				$retval2 = mysqli_query($conn, $insertQ);
 				if(! $retval2) {
 					die('Could not enter data: ' . mysqli_error($conn));
@@ -76,7 +73,7 @@
 			$retval = intval($row['second_class_seats']);
 			for($i = 0; $i < $retval; $i++){
 				$idVal = generateID();
-				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'SecondClass','50','$i_DepartTime','NULL')";
+				$insertQ = "insert into ticket_holder(ticket_id, flight_id, plane_id, seating_type, price, ticket_depart_timestamp, username) values($idVal, $i_flightID, $i_planeID, 'SecondClass','50','$i_DepartTime','NULL')";
 				$retval2 = mysqli_query($conn, $insertQ);
 				if(! $retval2) {
 					die('Could not enter data: ' . mysqli_error($conn));
@@ -91,7 +88,7 @@
 			$retval = intval($row['economy_seats']);
 			for($i = 0; $i < $retval; $i++){
 				$idVal = generateID();
-				$insertQ = "insert into ticket_holder(ticket_id, seating_type, price, ticket_depart_timestamp, username) values($idVal,'EconomyClass','25','$i_DepartTime','NULL')";
+				$insertQ = "insert into ticket_holder(ticket_id, flight_id, plane_id, seating_type, price, ticket_depart_timestamp, username) values($idVal, $i_flightID, $i_planeID, 'EconomyClass','25','$i_DepartTime','NULL')";
 				$retval2 = mysqli_query($conn, $insertQ);
 				if(! $retval2) {
 					die('Could not enter data: ' . mysqli_error($conn));
@@ -159,7 +156,7 @@
 			
          </table>
 		<?php
-			show_plane_makes_flight($conn); //shows this table to help the user assign a plane to a flight, currently plane_makes_flight doesnt seem to be working as intended
+			
 		?>
 		
 	  
