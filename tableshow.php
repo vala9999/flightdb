@@ -77,41 +77,7 @@ if ($result->num_rows > 0) {
 //$conn->close();
 }
 
-function show_plane_makes_flight($conn){
 
-//include "dbconnect.php";
-
-$sql = "SELECT * FROM plane_makes_flight";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-	
-	echo "<br><h3 id='TT'> Planes assigned to Flights Table<h3> <br>";
-	
-	echo '<table border>';
-	echo '<thead><tr>';
-	echo '<th>'."Plane ID".'</th>'.'<th>'."Flight ID".'</th>';
-	echo '</tr></thead>';
-	echo '<tbody>';
-
-	while($row = $result->fetch_assoc()) {
-		echo '<tr>';
-        echo "<td>" . $row["plane_id"]. "</td>";
-		echo "<td>" . $row["flight_id"]. "</td>";
-		echo '</tr>';
-    }
-	
-	echo '</tbody>';
-	echo '</table>';
-	
-    // output data of each row
-    
-	
-} else {
-    echo "0 results";
-}
-//$conn->close();
-}
 
 function show_ticket_holder($conn){
 
@@ -152,7 +118,7 @@ if ($result->num_rows > 0) {
 //$conn->close();
 }
 
-function show_ticket_holder_adv($conn, $sql){
+function show_ticket_holder_adv($conn, $sql){ // Make sure the result of the second parameter has the same rows as table set up below
 
 //include "dbconnect.php";
 
