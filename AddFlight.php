@@ -32,7 +32,7 @@
             $i_ETA = $_POST['i_ETA'];
 			$i_planeID = $_POST['i_planeID'];
 			
-			echo " <br> Flight table before insertion <br>";
+			echo "<p><br>Flight table before insertion<br></p>";
 			show_flight($conn);
    
             $sql = "INSERT INTO flight ".
@@ -95,7 +95,7 @@
 				}
 			}
 			/////////////////////////////////////////////////////////////
-			echo " <br> Flight table after insertion <br>";
+			echo "<p><br>Flight table after insertion<br></p>";
 			show_flight($conn);
 			
             mysqli_close($conn);
@@ -112,7 +112,7 @@
       <form method = "post" action = "<?php $_PHP_SELF ?>">
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
             <tr>
-               <td width = "250">Departure Time</td>
+               <td width = "250">Departure Time<br>yyyy-mm-dd hh:mm:ss</td>
                <td>
                   <input name = "i_DepartTime" type = "text" id = "i_DepartTime">
                </td>
@@ -133,7 +133,7 @@
             </tr>
       
             <tr>
-               <td width = "250"> ETA</td>
+               <td width = "250"> ETA<br>yyyy-mm-dd hh:mm:ss</td>
                <td> <input name="i_ETA" type= "text" id = "i_ETA"> </td>
             </tr>
 			

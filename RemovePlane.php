@@ -25,9 +25,8 @@
 		show_plane($conn);
          if(isset($_POST['add'])) {
             $i_planeID = $_POST['$i_planeID'];
-			
-			echo " <br> Plane table before deletion <br>";
-			show_plane($conn);
+
+			echo "<p><br>Plane table before deletion above<br></p>";
 			$sql1 = "DELETE FROM ticket_holder WHERE plane_id = $i_planeID";
             $sql2 = "DELETE FROM plane WHERE plane_id = $i_planeID";
             
@@ -44,14 +43,13 @@
             if(! $retval2 ) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
-         
-            echo "Entered data successfully\n\n";
 			
-			echo " <br> Plane table after deletion <br>";
+			echo " <p><br>Plane table after deletion below<br><br></p>";
 			show_plane($conn);
 			
             mysqli_close($conn);
          } 
+
 		 else if(isset($_POST['show'])){
 			 
 			 show_plane($conn);

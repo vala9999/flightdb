@@ -12,24 +12,16 @@
 	</ul>
 	<body>
         <h1>Home</h1>
-        <p><br>List of available tickets<br><br><br></p>
+        <p><br>List of open flights<br><br><br></p>
         
 		<?php 
 			require("tableshow.php");
 			require("dbconnect.php");
 
-            $sql = "select * from available_tickets natural join flight;";
-            $retval = mysqli_query($conn, $sql);
-         
-            if(! $retval ) {
-               die(mysqli_error($conn));
-            }
-			
-			show_ticket_holder($conn, $sql);
-			
+			show_flight($conn);
             mysqli_close($conn);
 			
-			echo '<br> </br>';
+
 			
 		?>
     </body>

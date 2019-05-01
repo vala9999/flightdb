@@ -20,10 +20,8 @@
 			require("tableshow.php");
 			require("dbconnect.php");
 			show_plane($conn);
-			echo '<br> </br>';
+			echo '<br><br>';
 			show_flight($conn);
-			echo '<br> </br>';
-			show_plane_makes_flight($conn);
 		?>
     </body>
 	

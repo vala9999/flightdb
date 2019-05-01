@@ -88,7 +88,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	
-	echo "<br><h3 id='TT'> Ticket Holders<h3> <br>";
+	echo "<br><h3 id='TT'>Available tickets<h3> <br>";
 	
 	echo '<table border>';
 	echo '<thead><tr>';

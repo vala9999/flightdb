@@ -24,7 +24,7 @@
 			 if(isset($_POST['add'])) {
 				$i_flightID = $_POST['$i_flightID'];
 				
-				echo " <br> Plane table before deletion <br>";
+				echo "<p><br>Plane table before deletion<br></p>";
 				show_flight($conn);
 				
 				$sql1 = "DELETE FROM ticket_holder WHERE flight_id = $i_flightID";
@@ -42,10 +42,8 @@
 				if(! $retval2 ) {
 				   die('Could not enter data: ' . mysqli_error($conn));
 				}
-			 
-				echo "Entered data successfully\n\n";
 				
-				echo " <br> Plane table after deletion <br>";
+				echo "<p><br>Plane table after deletion<br></p>";
 				show_flight($conn);
 				
 				mysqli_close($conn);

@@ -28,7 +28,7 @@
             $i_secondClass = $_POST['$i_secondClass'];
             $i_econClass = $_POST['$i_econClass'];
 			
-			echo " <br> Plane table before insertion <br>";
+			echo "<p><br>Plane table before insertion<br></p>";
 			show_plane($conn);
    
             $sql = "INSERT INTO plane ".
@@ -39,10 +39,8 @@
             if(! $retval ) {
                die('Could not enter data: ' . mysqli_error($conn));
             }
-         
-            echo "Entered data successfully\n\n";
 			
-			echo " <br> Plane table after insertion <br>";
+			echo "<br><p>Plane table after insertion</p><br>";
 			show_plane($conn);
 			
             mysqli_close($conn);
