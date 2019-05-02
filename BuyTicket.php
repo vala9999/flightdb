@@ -23,7 +23,7 @@
             $i_ticketID = $_POST['$i_ticketID'];
 			$i_email = $_POST['email'];
 			
-            $sql = "update ticket_holder SET username = ".$i_email." WHERE ticket_id = ".$i_ticketID;
+            $sql = "update ticket_holder SET username = '$i_email' WHERE ticket_id = $i_ticketID";
             $retval = mysqli_query($conn, $sql);
 			
 			echo " <br>You reserved these tickets:<br>";
